@@ -12,9 +12,9 @@ const Header = props => {
           </a>
         </h1>
         <nav className={styles.btn_nav}>
-          <a href='#' className={styles.nav}>
+          <div className={styles.nav}>
             <div className={styles.hamburger} />
-          </a>
+          </div>
         </nav>
       </div>
     </header>
