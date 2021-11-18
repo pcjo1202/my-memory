@@ -1,0 +1,20 @@
+import React from 'react'
+import styles from './login.module.css'
+
+const Login = ({ onLogin }) => {
+  const onSubminLogin = event => {
+    event.preventDefault()
+    onLogin()
+  }
+  return (
+    <div className={styles.login_container}>
+      <form className={styles.login_form} onSubmit={onSubminLogin}>
+        <input className={styles.id} type='text' placeholder='아이디 입력' />
+        <input className={styles.password} type='password' placeholder='비밀번호' />
+        <button className={styles.login_btn}>로그인</button>
+      </form>
+    </div>
+  )
+}
+
+export default Login

@@ -1,17 +1,32 @@
 .container {
   position: relative;
 }
-.content {
+.start,
+.login_box {
   width: 100%;
   height: 100%;
-  /* background-color: aquamarine; */
   position: absolute;
   top: 0%;
   left: 0%;
-  z-index: 99;
+}
+
+.start {
+  z-index: 4;
+}
+
+.login_box {
+  opacity: 0;
+  z-index: 3;
 }
 
 .noDisplay {
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.onDisplay {
+  opacity: 1;
+  transition: all 0.5s ease-in-out 0.6s;
+  z-index: 4;
 }

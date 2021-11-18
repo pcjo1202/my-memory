@@ -1,5 +1,4 @@
 import React from 'react'
-import TitleText from '../title_text/title_text'
 import styles from './main_virtual.module.css'
 
 const MainVirtual = props => {
