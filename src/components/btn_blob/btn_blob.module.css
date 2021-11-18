@@ -1,0 +1,48 @@
+@value mediaQueryMobile from '../../common/size.css';
+
+.btn_blob {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.btn_blob:hover {
+  transform: scale(1.1) translate(-45%, -45%);
+}
+
+.btn_blob > svg {
+  width: 15rem;
+  height: auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+}
+
+@media screen and (max-width: mediaQueryMobile) {
+  .btn_blob {
+  }
+
+  .btn_blob:hover {
+    transform: scale(1.1) translate(-45%, -45%);
+  }
+
+  .btn_blob > svg {
+    width: 13rem;
+  }
+  .name {
+    font-size: 1.8rem;
+  }
+}

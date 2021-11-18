@@ -1,4 +1,5 @@
 import React from 'react'
+import TitleText from '../title_text/title_text'
 import styles from './main_virtual.module.css'
 
 const MainVirtual = props => {
@@ -28,21 +29,6 @@ const MainVirtual = props => {
             className={styles.shape_fill}
           />
         </svg>
-      </div>
-      <div className={styles.btn_blob}>
-        <span className={styles.name}>시작하기</span>
-        <svg id='visual' viewBox='0 0 900 600' version='1.1'>
-          <g transform='translate(478.70656561796346 293.4698584727781)'>
-            <path
-              d='M101.2 -116C131.7 -70.7 157.4 -35.4 174.2 16.9C191.1 69.1 199.1 138.1 168.6 184C138.1 229.8 69.1 252.4 16.7 235.7C-35.6 218.9 -71.2 162.8 -121.2 117C-171.2 71.2 -235.6 35.6 -245.3 -9.7C-254.9 -54.9 -209.8 -109.8 -159.8 -155.2C-109.8 -200.5 -54.9 -236.3 -9.8 -226.5C35.4 -216.7 70.7 -161.4 101.2 -116'
-              fill='#FF6F61'
-            />
-          </g>
-        </svg>
-      </div>
-      <div className={styles.title_text}>
-        <p className={styles.title}>하루를 기록</p>
-        <p className={styles.sub}>당신의 하루를 기록해보세요</p>
       </div>
     </article>
   )
