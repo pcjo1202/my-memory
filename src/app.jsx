@@ -5,12 +5,11 @@ import Diary from './components/diary/diary'
 import Login from './components/login/login'
 import Main from './components/main/main'
 
-function App () {
+function App ({ authService }) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Main />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path='/' element={<Main authService={authService} />} />
         <Route exact path='/diary' element={<Diary />} />
       </Routes>
     </BrowserRouter>

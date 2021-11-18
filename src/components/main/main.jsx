@@ -7,7 +7,7 @@ import MainVirtual from '../main_virtual/main_virtual'
 import TitleText from '../title_text/title_text'
 import styles from './main.module.css'
 
-const Main = props => {
+const Main = ({ authService }) => {
   const [userId, setUserId] = useState()
   const [goLogin, setGoLogin] = useState(false)
 
@@ -28,7 +28,10 @@ const Main = props => {
     loginRef.current.classList.add(styles.onDisplay)
   }
 
-  const onLogin = () => {}
+  const onLogin = () => {
+    authService.googleAuth()
+  }
+
   return (
     <div className={styles.container}>
       <MainVirtual />
