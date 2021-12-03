@@ -2,49 +2,62 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import BtnBlob from '../btn_blob/btn_blob'
 import Header from '../header/header'
+import LoadingSpinner from '../loading_spinner/loading_spinner'
 import Login from '../login/login'
 import MainVirtual from '../main_virtual/main_virtual'
 import TitleText from '../title_text/title_text'
 import styles from './main.module.css'
 
 const Main = ({ authService }) => {
-  const [userId, setUserId] = useState()
-  const [goLogin, setGoLogin] = useState(false)
-
+  const [userId, setUserId] = useState(null)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const startRef = useRef()
   const loginRef = useRef()
 
-  useEffect(() => {
-    if (!userId) {
-    } else {
-      navigate('/diary')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useEffect(
+    () => {
+      setLoading(true)
+      authService.googleGetAuthState(user => {
+        if (user) {
+          setUserId(user.uid)
+          navigate('diary')
+        } else {
+          navigate('/')
+          setLoading(false)
+        }
+      })
+
+      return () => {
+        console.log(userId)
+      }
+    },
+    [authService, navigate, userId]
+  )
 
   const onClickStart = () => {
+    // 시작하기 버튼을 눌렀을 때 로그인화면 나오게하기
     startRef.current.classList.add(styles.noDisplay)
     loginRef.current.classList.add(styles.onDisplay)
-  }
-
-  const onLogin = () => {
-    authService.googleAuth()
   }
 
   return (
     <div className={styles.container}>
       <MainVirtual />
-      <Header />
-      <section className={styles.content}>
-        <div ref={startRef} className={styles.start}>
-          <TitleText />
-          <BtnBlob onClickStart={onClickStart} />
-        </div>
-        <div ref={loginRef} className={styles.login_box}>
-          <Login onLogin={onLogin} />
-        </div>
-      </section>
+      {loading
+        ? <LoadingSpinner />
+        : <div>
+          <Header />
+          <section className={styles.content}>
+            <div ref={startRef} className={styles.start}>
+              <TitleText />
+              <BtnBlob onClickStart={onClickStart} />
+            </div>
+            <div ref={loginRef} className={styles.login_box}>
+              <Login authService={authService} />
+            </div>
+          </section>
+        </div>}
     </div>
   )
 }

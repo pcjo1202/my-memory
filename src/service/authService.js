@@ -4,7 +4,8 @@ import {
   GoogleAuthProvider,
   getAuth,
   signInWithRedirect,
-  signOut
+  signOut,
+  onAuthStateChanged
 } from 'firebase/auth'
 
 export class AuthService {
@@ -12,11 +13,18 @@ export class AuthService {
     const auth = getAuth()
     auth.languageCode = 'it'
     const provider = new GoogleAuthProvider()
-    signInWithRedirect(auth, provider)
+    return signInWithRedirect(auth, provider)
   }
 
   googleSignOut () {
     const auth = getAuth()
-    signOut(auth)
+    return signOut(auth)
+  }
+
+  googleGetAuthState (onChangeUser) {
+    const auth = getAuth()
+    return onAuthStateChanged(auth, user => {
+      onChangeUser(user)
+    })
   }
 }

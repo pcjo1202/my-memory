@@ -1,10 +1,22 @@
+@value mediaQueryMobile from '../../common/size.css';
+
 .loading_spinner {
+  position: absolute;
+  top: 40%;
+  left: 45%;
   width: 10rem;
   height: 10rem;
-  border: 0.5rem solid black;
-  border-top: 0.5rem solid plum;
+  border: 0.4rem solid black;
+  border-top: 0.4rem solid plum;
   border-radius: 50%;
   animation: spinner 1s infinite;
+}
+@media screen and (max-width: mediaQueryMobile) {
+  .loading_spinner {
+    width: 7rem;
+    height: 7rem;
+    left: 37%;
+  }
 }
 
 @keyframes spinner {
