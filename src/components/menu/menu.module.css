@@ -2,11 +2,14 @@
 @value mediaQueryTablet from '../../common/size.css';
 
 .menu_wrapper {
-  width: 9rem;
+  position: relative;
+  width: 8rem;
   height: 100vh;
   padding: 0.8rem 0;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
   background-color: rgb(70, 70, 69);
-  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -14,18 +17,23 @@
   transition: all 0.2s ease-in;
 }
 
+.menu_wrapper.increase {
+  width: 13rem;
+}
+
 .menu_icon {
+  height: 5rem;
+  padding: 0.8rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
+  /* background-color: royalblue; */
 }
 
 .menu_hamburger {
-  width: 3.6rem;
+  width: 3.4rem;
   height: 0.4rem;
   border-radius: 1rem;
   background-color: #fff;
@@ -40,7 +48,8 @@
   width: 100%;
   height: 0.4rem;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: inherit;
+  transition: transform 0.2s ease-in;
 }
 
 .menu_hamburger::after {
@@ -93,9 +102,6 @@
   border-top: 5px dotted gray;
 }
 
-.active:hover {
-  background-color: grey;
-}
 /* 45rem */
 @media screen and (max-width: mediaQueryTablet) {
   .menu_wrapper {
@@ -106,7 +112,7 @@
     width: 3rem;
   }
   .sub_icon {
-    width: 50%;
+    width: 100%;
   }
 }
 
@@ -114,15 +120,49 @@
   .menu_wrapper {
     width: 100%;
     justify-content: center;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
     position: relative;
-    /* transform: translateX(-100%); */
+  }
+
+  .menu_wrapper.increase {
+    transform: translateX(-100%);
   }
 
   .menu_icon {
-    display: inline-block;
+    /* height: 4rem; */
     position: absolute;
-    top: 6%;
+    top: 2%;
     left: 7%;
+  }
+
+  .menu_hamburger {
+    transform: rotate(45deg);
+  }
+
+  .menu_hamburger::after {
+    display: none;
+  }
+  .menu_hamburger::before {
+    transform: rotate(90deg);
+  }
+
+  .menu_icon.active {
+    left: 110%;
+    transform: rotate(180deg);
+  }
+
+  .menu_icon.active > .menu_hamburger {
+    background-color: #000;
+    transform: rotate(0deg);
+  }
+
+  .menu_icon.active > .menu_hamburger::after {
+    display: block;
+  }
+
+  .menu_icon.active > .menu_hamburger::before {
+    transform: translateY(-1.1rem);
   }
 
   .sub_icon_list {
