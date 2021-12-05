@@ -1,0 +1,19 @@
+.add_btn {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  padding: 1rem;
+  border: none;
+  border-radius: 50%;
+  background-color: lightsalmon;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.add_btn:hover {
+  transform: scale(1.1);
+}
+
+.edit_icon {
+  font-size: 1.5rem;
+}
