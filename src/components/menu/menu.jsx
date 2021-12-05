@@ -8,12 +8,18 @@ const Menu = () => {
         <div className={styles.menu_hamburger} />
       </div>
       <ul className={styles.sub_icon_list}>
-        <li className={styles.sub_icon}>Home</li>
-        <li className={styles.sub_icon}>북마크</li>
-        <li className={styles.sub_icon}>폴더</li>
+        <li className={styles.sub_icon}>
+          <i className={`${styles.home_icon} fas fa-home`} />
+        </li>
+        <li className={styles.sub_icon}>
+          <i className={`${styles.bookmark_icon} far fa-bookmark`} />
+        </li>
+        <li className={styles.sub_icon}>
+          <i className={`${styles.folder_icon} far fa-folder`} />
+        </li>
       </ul>
-      <div className={styles.setting_icon}>
-        <div className={styles.setting_btn}>설정</div>
+      <div className={`${styles.setting_btn} ${styles.sub_icon}`}>
+        <i className={`${styles.setting_icon} fas fa-user-cog`} />
       </div>
     </nav>
   )

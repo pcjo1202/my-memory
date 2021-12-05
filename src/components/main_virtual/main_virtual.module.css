@@ -1,5 +1,6 @@
 @value makerLightPink from '../../common/colors.css';
 @value mediaQueryMobile from '../../common/size.css';
+@value mediaQueryTablet from '../../common/size.css';
 
 .main_virtual {
   width: 100%;
@@ -28,8 +29,8 @@
   fill: makerLightPink;
 }
 
-/** For mobile devices **/
-@media screen and (max-width: mediaQueryMobile) {
+/** For mobile,tablet devices **/
+@media screen and (max-width: mediaQueryTablet) {
   .custom_shape_divider_bottom_1637135735 svg {
     width: calc(100% + 1.3px);
     height: 80px;

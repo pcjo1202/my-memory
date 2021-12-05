@@ -1,4 +1,5 @@
 @value mediaQueryMobile from '../../common/size.css';
+@value mediaQueryTablet from '../../common/size.css';
 
 .loading_spinner {
   position: absolute;
@@ -11,7 +12,7 @@
   border-radius: 50%;
   animation: spinner 1s infinite;
 }
-@media screen and (max-width: mediaQueryMobile) {
+@media screen and (max-width: mediaQueryTablet) {
   .loading_spinner {
     width: 7rem;
     height: 7rem;

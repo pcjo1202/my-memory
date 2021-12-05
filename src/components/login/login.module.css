@@ -1,4 +1,5 @@
 @value mediaQueryMobile from '../../common/size.css';
+@value mediaQueryTablet from '../../common/size.css';
 
 .login_container {
   width: 100%;
@@ -47,7 +48,7 @@
   background-color: rgb(176, 194, 148);
 }
 
-@media screen and (max-width: mediaQueryMobile) {
+@media screen and (max-width: mediaQueryTablet) {
   .login_form {
     width: 18rem;
     /* top: 40%; */

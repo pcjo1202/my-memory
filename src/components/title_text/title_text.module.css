@@ -1,4 +1,5 @@
 @value mediaQueryMobile from '../../common/size.css';
+@value mediaQueryTablet from '../../common/size.css';
 
 .title_text {
   position: absolute;
@@ -25,7 +26,7 @@
   transition: all 0.5s ease-in-out;
 }
 
-@media screen and (max-width: mediaQueryMobile) {
+@media screen and (max-width: mediaQueryTablet) {
   .title_text {
     width: 100%;
     top: 30%;
