@@ -46,7 +46,7 @@
   content: '';
   position: absolute;
   width: 100%;
-  height: 0.4rem;
+  height: inherit;
   border-radius: 1rem;
   background-color: inherit;
   transition: transform 0.2s ease-in;
@@ -85,6 +85,10 @@
   background-color: rgba(0, 0, 0, 0.255);
 }
 
+.icon_text {
+  display: none;
+}
+
 .setting_btn {
   width: 100%;
   height: 15%;
@@ -106,6 +110,10 @@
 @media screen and (max-width: mediaQueryTablet) {
   .menu_wrapper {
     width: 6rem;
+  }
+
+  .menu_wrapper.increase {
+    width: 10rem;
   }
 
   .menu_hamburger {
@@ -132,7 +140,7 @@
   .menu_icon {
     /* height: 4rem; */
     position: absolute;
-    top: 2%;
+    top: 0%;
     left: 7%;
   }
 
@@ -146,23 +154,26 @@
   .menu_hamburger::before {
     transform: rotate(90deg);
   }
-
+  /* click했을 때 menu_icon 스타일 변화 (클릭할 때랑 안할때랑 반대로함 ㅋㅋㅋ*/
   .menu_icon.active {
     left: 110%;
     transform: rotate(180deg);
   }
 
   .menu_icon.active > .menu_hamburger {
+    width: 2rem;
+    height: 0.3rem;
     background-color: #000;
     transform: rotate(0deg);
   }
 
   .menu_icon.active > .menu_hamburger::after {
     display: block;
+    transform: translateY(0.8rem);
   }
 
   .menu_icon.active > .menu_hamburger::before {
-    transform: translateY(-1.1rem);
+    transform: translateY(-0.8rem);
   }
 
   .sub_icon_list {
