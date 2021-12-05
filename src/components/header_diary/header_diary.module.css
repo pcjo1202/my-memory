@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  /* background-color: red; */
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid grey;
+
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.logo {
+  width: 6rem;
+  height: auto;
+}
+
+.logo > img {
+  width: 100%;
+}
+
+.title {
+  align-self: center;
+  height: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 1rem;
+}

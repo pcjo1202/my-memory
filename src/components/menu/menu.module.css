@@ -33,8 +33,8 @@
 }
 
 .menu_hamburger {
-  width: 3.4rem;
-  height: 0.4rem;
+  width: 2.8rem;
+  height: 0.3rem;
   border-radius: 1rem;
   background-color: #fff;
   position: relative;
@@ -53,11 +53,11 @@
 }
 
 .menu_hamburger::after {
-  transform: translateY(1.1rem);
+  transform: translateY(1rem);
 }
 
 .menu_hamburger::before {
-  transform: translateY(-1.1rem);
+  transform: translateY(-1rem);
 }
 
 .sub_icon_list {
@@ -117,7 +117,7 @@
   }
 
   .menu_hamburger {
-    width: 3rem;
+    width: 2.8rem;
   }
   .sub_icon {
     width: 100%;
