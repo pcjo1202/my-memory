@@ -4,9 +4,9 @@ import styles from './header_diary.module.css'
 const HeaderDiary = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      {/* <div className={styles.logo}>
         <img src='/image/logo_transparent.png' alt='logo' />
-      </div>
+      </div> */}
       <div className={styles.title}>
         <p>모든노트</p>
       </div>

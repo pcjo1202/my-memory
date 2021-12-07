@@ -1,24 +1,35 @@
 @value mediaQueryMobile from '../../common/size.css';
 @value mediaQueryTablet from '../../common/size.css';
+@value menu_width_PC from '../../common/size.css';
+@value menu_increase_PC from '../../common/size.css';
 
 .menu_wrapper {
-  position: relative;
-  width: 8rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: menu_width_PC;
   height: 100vh;
   padding: 0.8rem 0;
-  border-bottom-right-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
   background-color: rgb(70, 70, 69);
+  transition: all 0.2s ease-in;
+}
 
+.menu_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   transition: all 0.2s ease-in;
+  /* background-color: blueviolet; */
 }
 
 .menu_wrapper.increase {
-  width: 13rem;
+  width: calc(menu_width_PC + menu_increase_PC);
 }
 
 .menu_icon {
@@ -29,7 +40,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: royalblue; */
 }
 
 .menu_hamburger {
@@ -67,11 +77,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  /* background-color: chartreuse; */
 }
 
 .sub_icon {
   color: rgb(187, 187, 187);
-  width: 50%;
+  width: 70%;
   padding: 1rem 0.5rem;
   text-align: center;
   font-size: 2rem;
@@ -90,101 +101,9 @@
 }
 
 .setting_btn {
-  width: 100%;
-  height: 15%;
-  padding: 1rem;
-  transition: all 0.5s ease-in;
-
-  position: absolute;
-  left: 50%;
-  bottom: 0%;
-  transform: translate(-50%, 0);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 5px dotted gray;
+  margin-top: 11rem;
 }
 
 /* 45rem */
 @media screen and (max-width: mediaQueryTablet) {
-  .menu_wrapper {
-    width: 6rem;
-  }
-
-  .menu_wrapper.increase {
-    width: 10rem;
-  }
-
-  .menu_hamburger {
-    width: 2.8rem;
-  }
-  .sub_icon {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: mediaQueryMobile) {
-  .menu_wrapper {
-    width: 100%;
-    justify-content: center;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    position: relative;
-  }
-
-  .menu_wrapper.increase {
-    transform: translateX(-100%);
-  }
-
-  .menu_icon {
-    /* height: 4rem; */
-    position: absolute;
-    top: 0%;
-    left: 7%;
-  }
-
-  .menu_hamburger {
-    transform: rotate(45deg);
-  }
-
-  .menu_hamburger::after {
-    display: none;
-  }
-  .menu_hamburger::before {
-    transform: rotate(90deg);
-  }
-  /* click했을 때 menu_icon 스타일 변화 (클릭할 때랑 안할때랑 반대로함 ㅋㅋㅋ*/
-  .menu_icon.active {
-    left: 110%;
-    transform: rotate(180deg);
-  }
-
-  .menu_icon.active > .menu_hamburger {
-    width: 2rem;
-    height: 0.3rem;
-    background-color: #000;
-    transform: rotate(0deg);
-  }
-
-  .menu_icon.active > .menu_hamburger::after {
-    display: block;
-    transform: translateY(0.8rem);
-  }
-
-  .menu_icon.active > .menu_hamburger::before {
-    transform: translateY(-0.8rem);
-  }
-
-  .sub_icon_list {
-    margin-bottom: 2rem;
-  }
-
-  .menu_hamburger {
-    width: 3rem;
-  }
-  .sub_icon {
-    width: 70%;
-    font-size: 2.5rem;
-  }
 }

@@ -1,2 +1,11 @@
+/* mediaQuery */
 @value mediaQueryTablet: 45rem;
 @value mediaQueryMobile: 24rem;
+
+/* menu */
+@value menu_width_PC: 6rem;
+@value menu_width_Tablet: 5.5rem;
+@value menu_width_mobile: 24rem;
+
+@value menu_increase_PC: 4rem;
+@value menu_increase_Tablet: 3rem;

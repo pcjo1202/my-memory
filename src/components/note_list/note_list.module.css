@@ -1,0 +1,19 @@
+@value mediaQueryMobile from '../../common/size.css';
+@value mediaQueryTablet from '../../common/size.css';
+
+.note_list_wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem;
+  overflow-y: auto;
+}
+
+.note_list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: mediaQueryTablet) {
+}
