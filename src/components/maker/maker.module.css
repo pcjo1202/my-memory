@@ -1,0 +1,39 @@
+.maker {
+  width: 100%;
+  height: 100%;
+}
+
+.header_maker {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 2rem;
+  border-bottom: 2px solid grey;
+  /* background-color: coral; */
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back_btn {
+  flex: 1;
+  font-size: 2rem;
+}
+
+.title_input {
+  flex: 1 1 70%;
+  font-size: 2rem;
+}
+
+.save_btn {
+  flex: 1;
+  font-size: inherit;
+}
+
+/* .textarea_wrapper {
+  width: 100%;
+} */
+
+.textarea_wrapper > textarea {
+  width: 100%;
+}

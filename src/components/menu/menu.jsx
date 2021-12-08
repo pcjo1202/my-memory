@@ -1,13 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './menu.module.css'
 
-const Menu = ({ contentsIncrease }) => {
+const Menu = ({ contentsIncrease, onLogOut }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
+  const iconTextRef = useRef()
+  const logoutRef = useRef()
+
+  const [subIcon, setSubIcon] = useState([
+    'home',
+    'bookmark',
+    'folder'
+    // 'setting'
+  ])
 
   const increaseMenu = () => {
     wrapperRef.current.classList.toggle(`${styles.increase}`)
     menuRef.current.classList.toggle(`${styles.active}`)
+    iconTextRef.current.classList.toggle(`${styles.onDisplay}`)
+    logoutRef.current.classList.toggle(`${styles.onDisplay}`)
     contentsIncrease()
   }
 
@@ -19,23 +31,33 @@ const Menu = ({ contentsIncrease }) => {
         </div>
 
         <ul className={styles.sub_icon_list}>
-          <li className={styles.sub_icon}>
-            <i className={`${styles.home_icon} fas fa-home`} />
-            <span className={styles.icon_text}>Home</span>
-          </li>
-          <li className={styles.sub_icon}>
-            <i className={`${styles.bookmark_icon} far fa-bookmark`} />
-            <span className={styles.icon_text}>Bookmark</span>
-          </li>
-          <li className={styles.sub_icon}>
-            <i className={`${styles.folder_icon} far fa-folder`} />
-            <span className={styles.icon_text}>Folder</span>
-          </li>
+          {subIcon.map(item => {
+            return (
+              <li className={styles.sub_icon}>
+                <Link to={`/${item}`} className={styles.sub_icon_link}>
+                  <i className={`${styles.item_icon} fas fa-${item}`} />
+                  <span ref={iconTextRef} className={styles.icon_text}>
+                    {item}
+                  </span>
+                </Link>
+              </li>
+            )
+          })}
         </ul>
 
-        <div className={`${styles.setting_btn} ${styles.sub_icon}`}>
+        <Link
+          to='setting'
+          className={`${styles.setting_btn} ${styles.sub_icon}`}
+        >
           <i className={`${styles.setting_icon} fas fa-user-cog`} />
-        </div>
+        </Link>
+        <button
+          ref={logoutRef}
+          className={`${styles.sub_icon} ${styles.logOut_btn}`}
+          onClick={onLogOut}
+        >
+          로그아웃
+        </button>
       </div>
     </nav>
   )
