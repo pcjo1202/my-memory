@@ -4,18 +4,17 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styles from './app.module.css'
 import Diary from './components/diary/diary'
 import Main from './components/main/main'
-import TitleText from './components/title_text/title_text'
+import Maker from './components/maker/maker'
 
 function App ({ authService }) {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<Main authService={authService} />} />
-        <Route
-          exact
-          path='/diary'
-          element={<Diary authService={authService} />}
-        />
+        <Route path='/home' element={<Main authService={authService} />} />
+        <Route path='/bookmark' element={<Maker />} />
+        <Route path='/folder' element={<Maker />} />
+        <Route path='/setting' element={<Maker />} />
       </Routes>
     </BrowserRouter>
   )

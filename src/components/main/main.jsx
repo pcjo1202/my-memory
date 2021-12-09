@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 import BtnBlob from '../btn_blob/btn_blob'
+import Diary from '../diary/diary'
 import Header from '../header/header'
 import LoadingSpinner from '../loading_spinner/loading_spinner'
 import Login from '../login/login'
@@ -21,15 +22,13 @@ const Main = ({ authService }) => {
       authService.googleGetAuthState(user => {
         if (user) {
           setUserId(user.uid)
-          navigate('diary')
         } else {
-          navigate('/')
           setLoading(false)
         }
       })
 
       return () => {
-        console.log(userId)
+        
       }
     },
     [authService, navigate, userId]
@@ -42,23 +41,27 @@ const Main = ({ authService }) => {
   }
 
   return (
-    <div className={styles.container}>
-      <MainVirtual />
-      {loading
-        ? <LoadingSpinner />
-        : <div>
-          <Header />
-          <section className={styles.content}>
-            <div ref={startRef} className={styles.start}>
-              <TitleText />
-              <BtnBlob onClickStart={onClickStart} />
-            </div>
-            <div ref={loginRef} className={styles.login_box}>
-              <Login authService={authService} />
-            </div>
-          </section>
+    <>
+      {userId
+        ? <Diary authService={authService} />
+        : <div className={styles.container}>
+          <MainVirtual />
+          {loading
+              ? <LoadingSpinner />
+              : <div>
+                <Header />
+                <section className={styles.content}>
+                  <div ref={startRef} className={styles.start}>
+                    <TitleText />
+                    <BtnBlob onClickStart={onClickStart} />
+                  </div>
+                  <div ref={loginRef} className={styles.login_box}>
+                    <Login authService={authService} />
+                  </div>
+                </section>
+              </div>}
         </div>}
-    </div>
+    </>
   )
 }
 
