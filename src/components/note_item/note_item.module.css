@@ -1,34 +1,36 @@
 .note_item {
+  align-self: center;
+  max-width: 15rem;
+  min-width: 12rem;
+  height: 9rem;
+  background: rgba(213, 213, 213, 0.598);
+  cursor: pointer;
+  /* margin: 0 0 0.6rem 0; */
+  transition: all 0.2s ease-out;
+
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.7rem;
-  margin: 0 0 0.6rem 0;
-  transition: all 0.2s ease-out;
-  cursor: pointer;
 }
 
-/* .note_item:hover ~ .preview {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-} */
-
-.preview {
-  width: 12rem;
-  height: 14rem;
-  border-radius: 2rem;
-  background-color: bisque;
-  transition: all 0.2s ease-out;
-}
-
-.preview:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.note_item:hover {
+  transform: scale(1.05);
 }
 
 .title {
-  transition: all 0.2s ease-out;
+  flex: 1 1 30%;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+  overflow: hidden;
 }
 
-.preview:hover ~ .title:hover {
-  transform: scale(1.1);
+.date {
+  justify-items: stretch;
+  flex: 1 1;
+}
+
+.hashtag {
+  flex: 1 1;
 }
