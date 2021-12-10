@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { Route, Routes, useNavigate } from 'react-router'
 import BtnBlob from '../btn_blob/btn_blob'
 import Diary from '../diary/diary'
 import Header from '../header/header'
 import LoadingSpinner from '../loading_spinner/loading_spinner'
 import Login from '../login/login'
 import MainVirtual from '../main_virtual/main_virtual'
+import Maker from '../maker/maker'
 import TitleText from '../title_text/title_text'
 import styles from './main.module.css'
 
@@ -27,9 +28,7 @@ const Main = ({ authService }) => {
         }
       })
 
-      return () => {
-        
-      }
+      return () => {}
     },
     [authService, navigate, userId]
   )
@@ -41,14 +40,15 @@ const Main = ({ authService }) => {
   }
 
   return (
-    <>
+    <div>
       {userId
         ? <Diary authService={authService} />
         : <div className={styles.container}>
           <MainVirtual />
           {loading
               ? <LoadingSpinner />
-              : <div>
+              : 
+              <>
                 <Header />
                 <section className={styles.content}>
                   <div ref={startRef} className={styles.start}>
@@ -59,9 +59,10 @@ const Main = ({ authService }) => {
                     <Login authService={authService} />
                   </div>
                 </section>
-              </div>}
+              </>
+              }
         </div>}
-    </>
+    </div>
   )
 }
 

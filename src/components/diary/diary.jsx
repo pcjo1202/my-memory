@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router'
+import { Route, Router, Routes, useNavigate } from 'react-router'
 import { useState } from 'react/cjs/react.development'
-import EditBtn from '../edit_btn/edit_btn'
-import HeaderDiary from '../header_diary/header_diary'
+import Bookmark from '../bookmark/bookmark'
+import DiaryContainer from '../diary_container/diary_container'
+import DiaryHome from '../diary_home/diary_home'
 import Menu from '../menu/menu'
-import NoteList from '../note_list/note_list'
 import styles from './diary.module.css'
 
 const Diary = ({ authService }) => {
@@ -45,11 +45,9 @@ const Diary = ({ authService }) => {
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
-      {/* <DiaryContainer/> */}
       <section ref={contentsRef} className={styles.contents}>
-        <HeaderDiary />
-        <NoteList memo={memo} />
-        <EditBtn />
+        <DiaryContainer memo={memo} />
+        {/* <DiaryHome memo={memo} /> */}
       </section>
     </div>
   )

@@ -9,14 +9,10 @@ import Maker from './components/maker/maker'
 function App ({ authService }) {
   return (
     <BrowserRouter>
-      <Routes>
+      <Main authService={authService} />
+      {/* <Routes>
         <Route exact path='/' element={<Main authService={authService} />} />
-        <Route path='/home' element={<Main authService={authService} />} />
-        <Route path='/bookmark' element={<Maker />} />
-        <Route path='/folder' element={<Maker />} />
-        <Route path='/setting' element={<Maker />} />
-        <Route path='/maker' element={<Maker />} />
-      </Routes>
+      </Routes> */}
     </BrowserRouter>
   )
 }
