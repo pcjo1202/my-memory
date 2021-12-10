@@ -15,6 +15,7 @@ function App ({ authService }) {
         <Route path='/bookmark' element={<Maker />} />
         <Route path='/folder' element={<Maker />} />
         <Route path='/setting' element={<Maker />} />
+        <Route path='/maker' element={<Maker />} />
       </Routes>
     </BrowserRouter>
   )

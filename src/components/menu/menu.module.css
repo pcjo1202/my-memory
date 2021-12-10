@@ -42,32 +42,16 @@
   align-items: center;
 }
 
-.menu_hamburger {
-  width: 2.8rem;
-  height: 0.3rem;
-  border-radius: 1rem;
-  background-color: #fff;
-  position: relative;
+.arrow {
+  width: 100%;
+  font-size: 2rem;
+  color: rgb(187, 187, 187);
+  text-shadow: 1px 0px 9px rgb(23, 23, 23);
   transition: all 0.2s ease-in;
 }
 
-.menu_hamburger::after,
-.menu_hamburger::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: inherit;
-  border-radius: 1rem;
-  background-color: inherit;
-  transition: transform 0.2s ease-in;
-}
-
-.menu_hamburger::after {
-  transform: translateY(1rem);
-}
-
-.menu_hamburger::before {
-  transform: translateY(-1rem);
+.active {
+  transform: rotate(180deg);
 }
 
 .sub_icon_list {
@@ -97,7 +81,7 @@
   background-color: rgba(0, 0, 0, 0.255);
 }
 
-.sub_icon_link {
+.sub_icon_box {
   width: 100%;
   text-decoration: none;
   color: inherit;
@@ -123,13 +107,21 @@
 
 .logOut_btn {
   display: none;
+  opacity: 0;
+  position: absolute;
+  bottom: 23%;
+  left: 50%;
+  transform: translate(-50%);
+
+  border: none;
+  background-color: transparent;
 }
 
 .onDisplay {
   display: block;
+  opacity: 1;
   transition: all 0.2s ease-in;
 }
-
 /* 45rem */
 @media screen and (max-width: mediaQueryTablet) {
 }

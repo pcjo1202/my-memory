@@ -27,28 +27,14 @@ const Diary = ({ authService }) => {
   }
 
   const [memo, setMemo] = useState(tempData) // 작성한 메모 데이터를 저장
-  const [userId, setUserId] = useState(null) // 로그인된 사용자 데이터 저장
   const navigate = useNavigate()
-
-  useEffect(
-    () => {
-      // 로그인상태를 확인합니다.
-      authService.googleGetAuthState(user => {
-        if (user) {
-          setUserId(user)
-        } else {
-          navigate(0)
-        }
-      })
-    },
-    [authService, navigate]
-  )
 
   const contentsRef = useRef()
 
   const onLogOut = () => {
     // 로그아웃
     authService.googleSignOut()
+    navigate(0)
   }
 
   const increase = () => {
@@ -56,18 +42,9 @@ const Diary = ({ authService }) => {
     contentsRef.current.classList.toggle(`${styles.increase}`)
   }
 
-  const changePage = event => {
-    const page = event.target.id
-    navigate(page)
-  }
-
   return (
     <div className={styles.container}>
-      <Menu
-        contentsIncrease={increase}
-        onLogOut={onLogOut}
-        changePage={changePage}
-      />
+      <Menu contentsIncrease={increase} onLogOut={onLogOut} />
       {/* <DiaryContainer/> */}
       <section ref={contentsRef} className={styles.contents}>
         <HeaderDiary />

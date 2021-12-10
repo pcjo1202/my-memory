@@ -26,7 +26,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
         </div>
 
         <ul className={styles.sub_icon_list}>
-          <li ref={subIconRef} className={styles.sub_icon} onClick={changePage}>
+          <li ref={subIconRef} className={styles.sub_icon}>
             <Link to='/home' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-home`} />
               <span ref={iconTextRef} className={styles.icon_text}>
@@ -35,7 +35,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
             </Link>
           </li>
 
-          <li ref={subIconRef} className={styles.sub_icon} onClick={changePage}>
+          <li ref={subIconRef} className={styles.sub_icon}>
             <Link to='/bookmark' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-bookmark`} />
               <span ref={iconTextRef} className={styles.icon_text}>
@@ -44,7 +44,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
             </Link>
           </li>
 
-          <li ref={subIconRef} className={styles.sub_icon} onClick={changePage}>
+          <li ref={subIconRef} className={styles.sub_icon}>
             <Link to='/folder' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-folder`} />
               <span ref={iconTextRef} className={styles.icon_text}>
@@ -57,7 +57,6 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
         <Link
           to='/setting'
           className={`${styles.setting_btn} ${styles.sub_icon}`}
-          onClick={changePage}
         >
           <i className={`${styles.setting_icon} fas fa-user-cog`} />
         </Link>

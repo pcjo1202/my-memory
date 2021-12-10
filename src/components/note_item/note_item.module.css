@@ -6,15 +6,29 @@
   gap: 0.7rem;
   margin: 0 0 0.6rem 0;
   transition: all 0.2s ease-out;
+  cursor: pointer;
 }
+
+/* .note_item:hover ~ .preview {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+} */
 
 .preview {
   width: 12rem;
   height: 14rem;
   border-radius: 2rem;
   background-color: bisque;
+  transition: all 0.2s ease-out;
+}
+
+.preview:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .title {
-  /* margin-top: 1rem; */
+  transition: all 0.2s ease-out;
+}
+
+.preview:hover ~ .title:hover {
+  transform: scale(1.1);
 }
