@@ -8,7 +8,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
   const logoutRef = useRef()
   const homeRef = useRef()
   const bookmarkRef = useRef()
-  const folderRef = useRef()
+  const calenderRef = useRef()
 
   const subIconRef = useCallback(node => {}, [])
 
@@ -17,7 +17,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
     menuRef.current.classList.toggle(`${styles.active}`)
     homeRef.current.classList.toggle(`${styles.onDisplay}`)
     bookmarkRef.current.classList.toggle(`${styles.onDisplay}`)
-    folderRef.current.classList.toggle(`${styles.onDisplay}`)
+    calenderRef.current.classList.toggle(`${styles.onDisplay}`)
     logoutRef.current.classList.toggle(`${styles.onDisplay}`)
     contentsIncrease()
   }
@@ -50,9 +50,9 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
 
           <li ref={subIconRef} className={styles.sub_icon}>
             <Link to='folder' className={styles.sub_icon_box}>
-              <i className={`${styles.item_icon} fas fa-folder`} />
-              <span ref={folderRef} className={styles.icon_text}>
-                folder
+              <i className={`${styles.item_icon} fas fa-calendar-alt`} />
+              <span ref={calenderRef} className={styles.icon_text}>
+                calender
               </span>
             </Link>
           </li>

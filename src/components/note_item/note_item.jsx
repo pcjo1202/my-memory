@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './note_item.module.css'
-const NoteItem = ({ memo }) => {
-  const { hashtag, title, date } = memo
+const NoteItem = ({ note }) => {
+  const { hashtag, title, date } = note
   return (
     <li className={styles.note_item}>
       <div className={styles.title}>

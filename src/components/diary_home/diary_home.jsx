@@ -4,11 +4,11 @@ import HeaderDiary from '../header_diary/header_diary'
 import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
 
-const DiaryHome = ({ memo }) => {
+const DiaryHome = ({ note }) => {
   return (
     <acticle className={styles.home}>
       <HeaderDiary />
-      <NoteList memo={memo} />
+      <NoteList note={note} />
       <EditBtn />
     </acticle>
   )
