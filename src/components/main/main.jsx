@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router'
+
+// components
 import BtnBlob from '../btn_blob/btn_blob'
 import Diary from '../diary/diary'
 import Header from '../header/header'
 import LoadingSpinner from '../loading_spinner/loading_spinner'
 import Login from '../login/login'
 import MainVirtual from '../main_virtual/main_virtual'
-import Maker from '../maker/maker'
 import TitleText from '../title_text/title_text'
 import styles from './main.module.css'
 
@@ -23,6 +24,7 @@ const Main = ({ authService }) => {
       authService.googleGetAuthState(user => {
         if (user) {
           setUserId(user.uid)
+          // navigate('/')
         } else {
           setLoading(false)
         }

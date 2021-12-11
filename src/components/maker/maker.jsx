@@ -31,6 +31,7 @@ const Maker = ({ children, onAdd }) => {
     }
 
     onAdd(note)
+    navigate('/')
   }
 
   const setDate = () => {
