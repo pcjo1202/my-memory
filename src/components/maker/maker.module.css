@@ -1,39 +1,91 @@
+input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: black;
+}
+
 .maker {
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  padding: 0 0.4rem;
 }
 
 .header_maker {
   width: 100%;
-  padding: 0.8rem;
-  font-size: 2rem;
-  border-bottom: 2px solid grey;
-  /* background-color: coral; */
-
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: row;
+  gap: 0.2rem;
+  border-bottom: 1px solid grey;
 }
 
-.back_btn {
-  flex: 1;
-  font-size: 2rem;
+.icon_wrapper {
+  font-size: 1.7rem;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .title_input {
-  flex: 1 1 70%;
-  font-size: 2rem;
-}
-
-.save_btn {
   flex: 1;
-  font-size: inherit;
+  font-size: 1.7rem;
+  padding: 0.4rem 0.7rem;
 }
 
-/* .textarea_wrapper {
+.subData {
   width: 100%;
-} */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hashtag {
+  flex: 1;
+  font-size: 1.7rem;
+  border-bottom: 1px solid grey;
+}
+
+.hashtag_input {
+  width: 100%;
+  font-size: 1.7rem;
+  padding: 0.4rem 0.7rem;
+}
+
+.emote {
+  width: 15%;
+  font-size: 1rem;
+  text-align: center;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  margin-left: 0.8rem;
+}
+
+.textarea_wrapper {
+  width: 100%;
+  flex: 1;
+}
 
 .textarea_wrapper > textarea {
-  width: 100%;
+  font-size: 1.7rem;
+  width: calc(100% - 1.4rem);
+  height: calc(100% - 1.4rem);
+  padding: 0.7rem;
+
+  border: 1px solid grey;
+  outline: none;
+  background-color: transparent;
 }

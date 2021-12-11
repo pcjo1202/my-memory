@@ -1,32 +1,24 @@
 import React, { useEffect, useRef } from 'react'
-import { Route, Router, Routes, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useState } from 'react/cjs/react.development'
-import Bookmark from '../bookmark/bookmark'
 import DiaryContainer from '../diary_container/diary_container'
-import DiaryHome from '../diary_home/diary_home'
 import Menu from '../menu/menu'
 import styles from './diary.module.css'
 
 const Diary = ({ authService }) => {
-  const tempData = {
-    '1': {
-      id: '1',
-      thumnail: '',
-      title: '첫번째'
-    },
-    '2': {
-      id: '2',
-      thumnail: '',
-      title: '두번째'
-    },
-    '3': {
-      id: '3',
-      thumnail: '',
-      title: '세번째'
-    }
-  }
+  // const tempData = {
+  //   '1': {
+  //     id: Date.now(),
+  //     title: '',
+  //     note: '',
+  //     hashtag: '',
+  //     emotion: '',
+  //     date: '',
+  //     bookmark: true
+  //   }
+  // }
 
-  const [memo, setMemo] = useState(tempData) // 작성한 메모 데이터를 저장
+  const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
   const navigate = useNavigate()
 
   const contentsRef = useRef()
@@ -42,12 +34,22 @@ const Diary = ({ authService }) => {
     contentsRef.current.classList.toggle(`${styles.increase}`)
   }
 
+  const onAdd = data => {
+    setNote(() => {
+      const update = { ...note }
+      update[data.id] = data
+      return update
+    })
+
+    console.log(note)
+  }
+
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
       <section ref={contentsRef} className={styles.contents}>
-        <DiaryContainer memo={memo} />
-        {/* <DiaryHome memo={memo} /> */}
+        <DiaryContainer note={note} onAdd={onAdd} />
+        {/* <DiaryHome note={note} /> */}
       </section>
     </div>
   )

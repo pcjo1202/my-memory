@@ -6,11 +6,11 @@ import EditBtn from '../edit_btn/edit_btn'
 
 const DiaryHome = ({ note }) => {
   return (
-    <acticle className={styles.home}>
+    <main className={styles.home}>
       <HeaderDiary />
       <NoteList note={note} />
       <EditBtn />
-    </acticle>
+    </main>
   )
 }
 

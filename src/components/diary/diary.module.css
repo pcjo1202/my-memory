@@ -3,6 +3,10 @@
 @value menu_width_PC from '../../common/size.css';
 @value menu_increase_PC from '../../common/size.css';
 
+body {
+  background-color: #e9e9e9;
+}
+
 .container {
   width: 100%;
   height: 100%;
@@ -11,6 +15,7 @@
 .contents {
   width: calc(100% - menu_width_PC);
   height: 100%;
+  padding: 0.8rem;
   position: absolute;
   left: menu_width_PC;
   overflow-y: auto;
