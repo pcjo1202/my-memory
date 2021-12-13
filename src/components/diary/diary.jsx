@@ -5,7 +5,7 @@ import DiaryContainer from '../diary_container/diary_container'
 import Menu from '../menu/menu'
 import styles from './diary.module.css'
 
-const Diary = ({ authService }) => {
+const Diary = ({ authService, repository, userId }) => {
   // const tempData = {
   //   '1': {
   //     id: Date.now(),
@@ -19,6 +19,23 @@ const Diary = ({ authService }) => {
   // }
 
   const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
+
+  useEffect(
+    () => {
+      repository.syncNote(userId, note => {
+        setNote(note)
+      })
+    },
+    [repository, userId]
+  )
+
+  // useEffect(
+  //   () => {
+  //     repository.saveNote(userId, note)
+  //   },
+  //   [note]
+  // )
+
   const navigate = useNavigate()
 
   const contentsRef = useRef()
@@ -41,7 +58,7 @@ const Diary = ({ authService }) => {
       return update
     })
 
-    console.log(note)
+    repository.saveNote(userId, note)
   }
 
   return (

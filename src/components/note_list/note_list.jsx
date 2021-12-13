@@ -5,7 +5,8 @@ const NoteList = ({ note }) => {
   return (
     <section className={styles.note_list_wrapper}>
       <ul className={styles.note_list}>
-        {Object.keys(note).map(id => <NoteItem key={id} note={note[id]} />)}
+        {note &&
+          Object.keys(note).map(id => <NoteItem key={id} note={note[id]} />)}
       </ul>
     </section>
   )

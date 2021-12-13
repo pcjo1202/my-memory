@@ -11,7 +11,7 @@ import MainVirtual from '../main_virtual/main_virtual'
 import TitleText from '../title_text/title_text'
 import styles from './main.module.css'
 
-const Main = ({ authService }) => {
+const Main = ({ authService, repository }) => {
   const [userId, setUserId] = useState(null)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
@@ -44,7 +44,7 @@ const Main = ({ authService }) => {
   return (
     <div>
       {userId
-        ? <Diary authService={authService} />
+        ? <Diary authService={authService} repository={repository} userId={userId}/>
         : <div className={styles.container}>
           <MainVirtual />
           {loading

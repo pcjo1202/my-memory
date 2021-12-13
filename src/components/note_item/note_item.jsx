@@ -11,9 +11,10 @@ const NoteItem = ({ note }) => {
         {date}
       </p>
       <p className={styles.hashtag}>
-        {hashtag.map(tag => {
-          return `#${tag}`
-        })}
+        {hashtag &&
+          hashtag.map(tag => {
+            return `#${tag}`
+          })}
       </p>
     </li>
   )
