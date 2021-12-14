@@ -31,7 +31,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
 
         <ul className={styles.sub_icon_list}>
           <li ref={subIconRef} className={styles.sub_icon}>
-            <Link to='home' className={styles.sub_icon_box}>
+            <Link to='/' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-home`} />
               <span ref={homeRef} className={styles.icon_text}>
                 Home

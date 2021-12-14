@@ -1,6 +1,9 @@
 import React from 'react'
 import styles from './note_item.module.css'
-const NoteItem = ({ note }) => {
+
+import { RiDeleteBin6Line } from 'react-icons/ri'
+
+const NoteItem = ({ note, onDelete }) => {
   const { hashtag, title, date } = note
   return (
     <li className={styles.note_item}>
@@ -16,6 +19,14 @@ const NoteItem = ({ note }) => {
             return `#${tag}`
           })}
       </p>
+      <button
+        className={styles.delete}
+        onClick={() => {
+          onDelete(note)
+        }}
+      >
+        <RiDeleteBin6Line />
+      </button>
     </li>
   )
 }

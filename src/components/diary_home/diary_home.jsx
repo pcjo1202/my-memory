@@ -4,12 +4,12 @@ import HeaderDiary from '../header_diary/header_diary'
 import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
 
-const DiaryHome = ({ note }) => {
+const DiaryHome = ({ note, onDelete }) => {
   return (
     <main className={styles.home}>
       <div className={styles.bg_cover} />
       <HeaderDiary />
-      <NoteList note={note} />
+      <NoteList note={note} onDelete={onDelete} />
       <EditBtn />
     </main>
   )

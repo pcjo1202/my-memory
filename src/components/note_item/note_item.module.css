@@ -15,10 +15,10 @@
   flex-direction: column;
   position: relative;
 }
-
+/* 
 .note_item:hover {
-  transform: scale(1.05);
-}
+  background-color: rgb(206, 206, 206);
+} */
 
 .title {
   flex: 1 1 30%;
@@ -34,4 +34,24 @@
 
 .hashtag {
   flex: 1 1;
+}
+
+.delete {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  border: 2px solid rgb(77, 77, 77);
+  /* padding: 0; */
+  border-radius: 0.7rem;
+  background-color: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.delete:hover {
+  background-color: rgb(191, 191, 191);
 }

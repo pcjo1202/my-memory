@@ -4,11 +4,10 @@ import Bookmark from '../bookmark/bookmark'
 import DiaryHome from '../diary_home/diary_home'
 import Maker from '../maker/maker'
 
-const DiaryContainer = ({ note, onAdd }) => {
+const DiaryContainer = ({ note, onAdd, onDelete }) => {
   return (
     <Routes>
-      <Route path='/' element={<DiaryHome note={note} />} />
-      <Route path='/home' element={<DiaryHome note={note} />} />
+      <Route path='/' element={<DiaryHome note={note} onDelete={onDelete} />} />
       <Route path='/bookmark' element={<Bookmark />} />
       {/* <Route path='folder' element={<Maker />} />
       <Route path='/setting' element={<Maker />} /> */}

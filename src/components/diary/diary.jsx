@@ -60,11 +60,20 @@ const Diary = ({ authService, repository, userId }) => {
     repository.saveNote(userId, note)
   }
 
+  const onDelete = data => {
+    setNote(note => {
+      const update = { ...note }
+      delete update[data.id]
+      return update
+    })
+    repository.saveNote(userId, note)
+  }
+
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
       <section ref={contentsRef} className={styles.contents}>
-        <DiaryContainer note={note} onAdd={onAdd} />
+        <DiaryContainer note={note} onAdd={onAdd} onDelete={onDelete} />
         {/* <DiaryHome note={note} /> */}
       </section>
     </div>
