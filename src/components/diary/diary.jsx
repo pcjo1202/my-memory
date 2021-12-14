@@ -52,12 +52,11 @@ const Diary = ({ authService, repository, userId }) => {
   }
 
   const onAdd = data => {
-    setNote(() => {
+    setNote(note => {
       const update = { ...note }
       update[data.id] = data
       return update
     })
-
     repository.saveNote(userId, note)
   }
 

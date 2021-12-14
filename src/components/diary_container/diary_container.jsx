@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
 import Bookmark from '../bookmark/bookmark'
-import Diary from '../diary/diary'
 import DiaryHome from '../diary_home/diary_home'
 import Maker from '../maker/maker'
 

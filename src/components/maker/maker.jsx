@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useNavigate } from 'react-router'
 import styles from './maker.module.css'
 
-const Maker = ({ children, onAdd }) => {
+const Maker = ({ onAdd }) => {
   const noteRef = useRef()
   const titleRef = useRef()
   const emotionRef = useRef()

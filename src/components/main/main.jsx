@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Route, Routes, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 
 // components
 import BtnBlob from '../btn_blob/btn_blob'

@@ -5,7 +5,7 @@ const HeaderDiary = () => {
   return (
     <header className={styles.header}>
       <div className={styles.title}>
-        <p>모든노트</p>
+        <p>나의 기록</p>
       </div>
     </header>
   )

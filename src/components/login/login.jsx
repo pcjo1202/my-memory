@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react/cjs/react.development'
 import AuthBtn from '../auth_btn/auth_btn'
 import styles from './login.module.css'
 
