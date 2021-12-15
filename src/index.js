@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.module.css'
 import App from './app'
+
 import { AuthService } from './service/authService'
+
 import '@fortawesome/fontawesome-free/js/all'
-import { NoteRepository } from './service/noteRepository'
+import NoteRepository from './service/noteRepository'
+
 // import reportWebVitals from './reportWebVitals'
 
 const authService = new AuthService()

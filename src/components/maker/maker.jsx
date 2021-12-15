@@ -13,7 +13,6 @@ const Maker = ({ onAdd }) => {
   const handleSubmit = event => {
     event.preventDefault()
     const hashtagArr = hashtagRef.current.value.split('#').splice(1)
-
     const emote = {
       1: '😆',
       2: '😂',
@@ -43,16 +42,12 @@ const Maker = ({ onAdd }) => {
     return `${year}.${month}.${day} `
   }
 
-  const handleChange = event => {
-    // console.log(children)
-  }
-
   const goBack = () => {
     navigate('/')
   }
 
   return (
-    <div className={styles.maker}>
+    <form className={styles.maker}>
       {/* goBack, title and save */}
       <header className={styles.header_maker}>
         <button className={styles.icon_wrapper} onClick={goBack}>
@@ -92,10 +87,9 @@ const Maker = ({ onAdd }) => {
           ref={noteRef}
           name='memoText'
           placeholder='This is a description.'
-          onChange={handleChange}
         />
       </div>
-    </div>
+    </form>
   )
 }
 

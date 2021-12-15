@@ -6,35 +6,18 @@ import Menu from '../menu/menu'
 import styles from './diary.module.css'
 
 const Diary = ({ authService, repository, userId }) => {
-  // const tempData = {
-  //   '1': {
-  //     id: Date.now(),
-  //     title: '',
-  //     note: '',
-  //     hashtag: '',
-  //     emotion: '',
-  //     date: '',
-  //     bookmark: true
-  //   }
-  // }
-
   const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
+  const [loding, setLoding] = useState(true)
 
   useEffect(
     () => {
-      repository.syncNote(userId, note => {
-        setNote(note)
+      repository.syncNote(userId, data => {
+        setNote(data)
       })
+      setLoding(false)
     },
     [repository, userId]
   )
-
-  // useEffect(
-  //   () => {
-  //     repository.saveNote(userId, note)
-  //   },
-  //   [note]
-  // )
 
   const navigate = useNavigate()
 
@@ -52,29 +35,35 @@ const Diary = ({ authService, repository, userId }) => {
   }
 
   const onAdd = data => {
-    setNote(note => {
-      const update = { ...note }
+    setNote(notes => {
+      const update = { ...notes }
       update[data.id] = data
+      repository.saveNote(userId, update)
       return update
     })
-    repository.saveNote(userId, note)
+    // repository.saveNote(userId, note)
   }
 
   const onDelete = data => {
     setNote(note => {
       const update = { ...note }
       delete update[data.id]
+      repository.saveNote(userId, update)
       return update
     })
-    repository.saveNote(userId, note)
+    // repository.saveNote(userId, note)
   }
 
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
       <section ref={contentsRef} className={styles.contents}>
-        <DiaryContainer note={note} onAdd={onAdd} onDelete={onDelete} />
-        {/* <DiaryHome note={note} /> */}
+        <DiaryContainer
+          note={note}
+          onAdd={onAdd}
+          onDelete={onDelete}
+          lodingState={loding}
+        />
       </section>
     </div>
   )
