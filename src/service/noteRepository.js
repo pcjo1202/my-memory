@@ -2,7 +2,7 @@ import { database } from './firebase'
 import { set, ref, remove, get, child } from 'firebase/database'
 
 class NoteRepository {
-  async syncNote (userId, onUpdate) {
+  getNote (userId, onUpdate) {
     // get을 사용하면 처음 로그인 후 접속했을 때에만 데이터를 불러 올 수 있게 했다.
     const dbRef = ref(database)
     get(child(dbRef, `users/note/${userId}`)) //

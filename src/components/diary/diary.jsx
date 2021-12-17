@@ -7,21 +7,35 @@ import styles from './diary.module.css'
 
 const Diary = ({ authService, repository, userId }) => {
   const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
-  const [loding, setLoding] = useState(true)
+  const [loding, setLoding] = useState(false)
+
+  const firstRender = useRef(true) // 첫번째 렌더링이 끝나면 false로 바꿈
+
+  const contentsRef = useRef()
 
   useEffect(
     () => {
-      repository.syncNote(userId, data => {
+      repository.getNote(userId, data => {
         setNote(data)
       })
-      setLoding(false)
     },
     [repository, userId]
   )
 
-  const navigate = useNavigate()
+  useEffect(
+    () => {
+      if (firstRender.current) {
+        // 처음 렌터링 될 때 true 값을 false 값으로 바꿈 (처음 렌더링 될때만 동작하지 않음)
+        firstRender.current = false
+      } else {
+        repository.saveNote(userId, note)
+      }
+    },
+    [note]
+  )
+  //
 
-  const contentsRef = useRef()
+  const navigate = useNavigate()
 
   const onLogOut = () => {
     // 로그아웃
@@ -38,20 +52,16 @@ const Diary = ({ authService, repository, userId }) => {
     setNote(notes => {
       const update = { ...notes }
       update[data.id] = data
-      repository.saveNote(userId, update)
       return update
     })
-    // repository.saveNote(userId, note)
   }
 
   const onDelete = data => {
     setNote(note => {
       const update = { ...note }
       delete update[data.id]
-      repository.saveNote(userId, update)
       return update
     })
-    // repository.saveNote(userId, note)
   }
 
   return (
