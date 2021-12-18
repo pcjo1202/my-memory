@@ -1,17 +1,18 @@
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { useState } from 'react/cjs/react.development'
+
 import DiaryContainer from '../diary_container/diary_container'
 import Menu from '../menu/menu'
+import Preview from '../preview/preview'
 import styles from './diary.module.css'
 
 const Diary = ({ authService, repository, userId }) => {
   const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
-  const [loding, setLoding] = useState(false)
+  const [preview, setPreview] = useState(null)
 
   const firstRender = useRef(true) // 첫번째 렌더링이 끝나면 false로 바꿈
-
-  const contentsRef = useRef()
+  const contentsRef = useRef() // contens 태그에 접근하기 위해
 
   useEffect(
     () => {
@@ -31,6 +32,7 @@ const Diary = ({ authService, repository, userId }) => {
         repository.saveNote(userId, note)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [note]
   )
   //
@@ -64,6 +66,16 @@ const Diary = ({ authService, repository, userId }) => {
     })
   }
 
+  const handlePreview = note => {
+    if (preview === null) {
+      // 활성화 하면서 데이터를 임시로 저장
+      setPreview(note)
+    } else {
+      // preview를 끌 때 임시데이터를 삭제함
+      setPreview(null)
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
@@ -72,8 +84,9 @@ const Diary = ({ authService, repository, userId }) => {
           note={note}
           onAdd={onAdd}
           onDelete={onDelete}
-          lodingState={loding}
+          handlePreview={handlePreview}
         />
+        {preview && <Preview note={preview} handlePreview={handlePreview} />}
       </section>
     </div>
   )

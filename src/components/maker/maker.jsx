@@ -23,7 +23,7 @@ const Maker = ({ onAdd }) => {
     const note = {
       id: Date.now(),
       title: titleRef.current.value || '제목없음',
-      note: noteRef.current.value || '내용없음',
+      text: noteRef.current.value || '내용없음',
       hashtag: hashtagArr || '',
       emotion: emote[emotionRef.current.value] || '',
       date: setDate()
@@ -39,7 +39,7 @@ const Maker = ({ onAdd }) => {
     const month = date.getMonth() + 1
     const day = date.getDate()
 
-    return `${year}.${month}.${day} `
+    return `${year}년 ${month}월 ${day}일`
   }
 
   const goBack = () => {
