@@ -8,6 +8,14 @@
   overflow-y: auto;
 }
 
+.partition {
+  /* display: flex;/ */
+}
+
+.date {
+  font-size: 1.5rem;
+}
+
 .note_list {
   width: 100%;
   display: grid;

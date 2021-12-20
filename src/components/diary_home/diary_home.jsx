@@ -4,19 +4,24 @@ import styles from './diary_home.module.css'
 import HeaderDiary from '../header_diary/header_diary'
 import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
-import LoadingSpinner from '../loading_spinner/loading_spinner'
-import Preview from '../preview/preview'
 
-const DiaryHome = ({ note, onDelete, lodingState }) => {
+const DiaryHome = ({ note, onDelete, handlePreview }) => {
   // console.log(lodingState)
   return (
     <main className={styles.home}>
-      <div className={styles.bg_cover} />
-      {/* <Preview /> */}
-      <HeaderDiary />
-      {lodingState
-        ? <LoadingSpinner />
-        : <NoteList note={note} onDelete={onDelete} />}
+      <HeaderDiary name='나의 기록' />
+      {Object.keys(note).length === 0
+        ? <h1 className={styles.noItem}>당신의 하루를 남겨보세요😍</h1>
+        : Object.keys(note).map(date =>
+          <NoteList
+            key={date}
+            date={date}
+            note={note[date]}
+            onDelete={onDelete}
+            handlePreview={handlePreview}
+            />
+          )}
+
       <EditBtn />
     </main>
   )

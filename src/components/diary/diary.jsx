@@ -53,7 +53,8 @@ const Diary = ({ authService, repository, userId }) => {
   const onAdd = data => {
     setNote(notes => {
       const update = { ...notes }
-      update[data.id] = data
+      const innerData = update[data.date]
+      update[data.date] = { ...innerData, [data.id]: data }
       return update
     })
   }
