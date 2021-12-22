@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import styles from './preview.module.css'
 
-const Preview = ({ note, handlePreview }) => {
+const Preview = ({ note, handlePreview, theme }) => {
   const previewRef = useRef()
 
   const onClickExit = () => {

@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './header_diary.module.css'
 
-const HeaderDiary = () => {
+const HeaderDiary = ({ name }) => {
   return (
     <header className={styles.header}>
       <div className={styles.title}>
-        <p>나의 기록</p>
+        <p>
+          {name}
+        </p>
       </div>
     </header>
   )

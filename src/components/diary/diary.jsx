@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { useState } from 'react/cjs/react.development'
+import ThemeContext, { ThemeProvider } from '../../contexts/themeContext'
 
 import DiaryContainer from '../diary_container/diary_container'
 import Menu from '../menu/menu'
@@ -10,6 +10,7 @@ import styles from './diary.module.css'
 const Diary = ({ authService, repository, userId }) => {
   const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
   const [preview, setPreview] = useState(null)
+  const [setting, setSetting] = useState({ theme: 'Default' }) // setting page에서 설정하는 데이터를 여기에 저장
 
   const firstRender = useRef(true) // 첫번째 렌더링이 끝나면 false로 바꿈
   const contentsRef = useRef() // contens 태그에 접근하기 위해
@@ -77,19 +78,36 @@ const Diary = ({ authService, repository, userId }) => {
     }
   }
 
+  const changeTheme = color => {
+    setSetting(prev => ({ ...prev, theme: color }))
+  }
+
   return (
-    <div className={styles.container}>
-      <Menu contentsIncrease={increase} onLogOut={onLogOut} />
-      <section ref={contentsRef} className={styles.contents}>
-        <DiaryContainer
-          note={note}
-          onAdd={onAdd}
-          onDelete={onDelete}
-          handlePreview={handlePreview}
+    <ThemeProvider theme={setting.theme}>
+      <div className={styles.container}>
+        <Menu
+          contentsIncrease={increase}
+          onLogOut={onLogOut}
+          theme={setting.theme}
         />
-        {preview && <Preview note={preview} handlePreview={handlePreview} />}
-      </section>
-    </div>
+        <section ref={contentsRef} className={styles.contents}>
+          <DiaryContainer
+            note={note}
+            onAdd={onAdd}
+            onDelete={onDelete}
+            handlePreview={handlePreview}
+            changeTheme={changeTheme}
+            theme={setting.theme}
+          />
+          {preview &&
+            <Preview
+              note={preview}
+              handlePreview={handlePreview}
+              theme={setting.theme}
+            />}
+        </section>
+      </div>
+    </ThemeProvider>
   )
 }
 

@@ -1,14 +1,18 @@
-import React, { useCallback, useRef } from 'react'
+import React, { useCallback, useContext, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import ThemeContext from '../../contexts/themeContext'
 import styles from './menu.module.css'
 
-const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
+const Menu = ({ contentsIncrease, onLogOut }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
   const logoutRef = useRef()
   const homeRef = useRef()
   const bookmarkRef = useRef()
   const calenderRef = useRef()
+
+  const theme = useContext(ThemeContext)
+  console.log(theme)
 
   const subIconRef = useCallback(node => {}, [])
 
@@ -23,7 +27,13 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
   }
 
   return (
-    <nav ref={wrapperRef} className={styles.menu_wrapper}>
+    <nav
+      ref={wrapperRef}
+      className={`${styles.menu_wrapper} ${styles.theme}`}
+      style={{
+        background: theme
+      }}
+    >
       <div className={styles.menu_box}>
         <div ref={menuRef} className={styles.menu_icon} onClick={increaseMenu}>
           <i className={`fas fa-angle-double-right ${styles.arrow}`} />
@@ -49,7 +59,7 @@ const Menu = ({ contentsIncrease, onLogOut, changePage }) => {
           </li>
 
           <li ref={subIconRef} className={styles.sub_icon}>
-            <Link to='folder' className={styles.sub_icon_box}>
+            <Link to='calendar' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-calendar-alt`} />
               <span ref={calenderRef} className={styles.icon_text}>
                 calender
