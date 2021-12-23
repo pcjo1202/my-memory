@@ -10,8 +10,7 @@ const DiaryContainer = ({
   onAdd,
   onDelete,
   handlePreview,
-  changeTheme,
-  theme
+  changeTheme
 }) => {
   return (
     <Routes>
@@ -22,17 +21,16 @@ const DiaryContainer = ({
             note={note}
             onDelete={onDelete}
             handlePreview={handlePreview}
-            theme={theme}
           />
         }
       />
-      <Route path='/bookmark' element={<Bookmark theme={theme} />} />
+      <Route path='/bookmark' element={<Bookmark />} />
       {/* <Route path='calendar' element={<Maker />} /> */}
       <Route
         path='/setting'
-        element={<UserSetting changeTheme={changeTheme} theme={theme} />}
+        element={<UserSetting changeTheme={changeTheme} />}
       />
-      <Route path='/maker' element={<Maker onAdd={onAdd} theme={theme} />} />
+      <Route path='/maker' element={<Maker onAdd={onAdd} />} />
     </Routes>
   )
 }

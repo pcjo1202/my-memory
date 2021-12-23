@@ -6,7 +6,6 @@ import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
 
 const DiaryHome = ({ note, onDelete, handlePreview }) => {
-  // console.log(lodingState)
   return (
     <main className={styles.home}>
       <HeaderDiary name='나의 기록' />

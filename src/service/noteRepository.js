@@ -1,35 +1,26 @@
-import { database } from './firebase';
-import { set, ref, remove, get, child } from 'firebase/database';
+import { database } from './firebase'
+import { set, ref, remove, get, child } from 'firebase/database'
 
 class NoteRepository {
-  toDay = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
-    return `${year}_${month}_${day}`;
-  };
-
-  getNote(userId, onUpdate) {
+  getNote (userId, onUpdate) {
     // get을 사용하면 처음 로그인 후 접속했을 때에만 데이터를 불러 올 수 있게 했다.
-    const dbRef = ref(database);
+    const dbRef = ref(database)
     get(child(dbRef, `users/${userId}/note`)) //
       .then(snapshot => {
-        const data = snapshot.val();
-        data && onUpdate(data);
-      });
+        const data = snapshot.val()
+        data && onUpdate(data)
+      })
   }
 
-  saveNote(userId, note) {
+  saveNote (userId, note) {
     // // userId와 저장할 데이터 (note)를 받는다.
-    return set(ref(database, `users/${userId}/note`), note);
+    return set(ref(database, `users/${userId}/note`), note)
     // localStorage.setItem(userId, JSON.stringify(note))
   }
 
-  removeNote(userId) {
-    return remove(ref(database, `users/${userId}/note`));
+  removeNote (userId) {
+    return remove(ref(database, `users/${userId}/note`))
   }
 }
 
-export default NoteRepository;
+export default NoteRepository

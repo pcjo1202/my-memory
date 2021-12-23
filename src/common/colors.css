@@ -1,10 +1,13 @@
-@value makerBlack: black;
-@value makerWhite: white;
-@value makerLightGrey: #e8e7e6;
-@value makerLightPink: #ffeae8;
-@value makerGrey: #626262;
-@value makerGreen: #385461;
-@value makerPink: pink;
-@value makerShadow: rgba(217, 217, 217, 1);
-@value makerColorful: linear-gradient(166deg, rgba(237, 193, 211, 1) 0%,rgba(212, 149, 161, 1) 60%, rgba(162, 63, 63, 1) 100%, rgba(127, 188, 242, 1) 100%);
-@value makerWheat: wheat;
+/* Main Virtual & Font & Border */
+@value LightPink: #ffeae8;
+@value Grey: #626262;
+@value MidnightBlue: #191970;
+
+/* Diary Theme */
+@value Menu_LightGreen: #6DA983;
+@value Menu_Blue: #4682B4;
+@value Menu_Dark: #696969;
+
+@value BackGround_White: #EFF2E8;
+@value BackGround_HeavyGreen: #79895F;
+@value BackGround_DarkGrey: #9C9C9C;

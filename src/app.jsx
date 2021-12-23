@@ -6,13 +6,14 @@ import Diary from './components/diary/diary'
 import Main from './components/main/main'
 import Maker from './components/maker/maker'
 
-function App ({ authService, repository }) {
+function App ({ authService, repository, userData }) {
   return (
     <BrowserRouter>
-      <Main authService={authService} repository={repository} />
-      {/* <Routes>
-        <Route exact path='/' element={<Main authService={authService} />} />
-      </Routes> */}
+      <Main
+        authService={authService}
+        repository={repository}
+        userData={userData}
+      />
     </BrowserRouter>
   )
 }

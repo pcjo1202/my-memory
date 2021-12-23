@@ -1,14 +1,20 @@
 import React, { useRef } from 'react'
+import { useThemeContext } from '../../contexts/themeContext'
 import styles from './preview.module.css'
 
-const Preview = ({ note, handlePreview, theme }) => {
+const Preview = ({ note, handlePreview }) => {
   const previewRef = useRef()
+  const theme = useThemeContext()
+
+  const bgStyle = {
+    background: theme ? theme.background : null
+  }
 
   const onClickExit = () => {
     handlePreview(note)
   }
   return (
-    <section ref={previewRef} className={styles.preview}>
+    <section ref={previewRef} className={styles.preview} style={bgStyle}>
       <header className={styles.top}>
         <p className={styles.date}>
           {note.date}

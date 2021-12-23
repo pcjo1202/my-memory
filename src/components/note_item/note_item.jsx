@@ -2,9 +2,20 @@ import React from 'react'
 import styles from './note_item.module.css'
 
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import { useThemeContext } from '../../contexts/themeContext'
 
 const NoteItem = ({ note, onDelete, handlePreview }) => {
   const { hashtag, title, date } = note
+
+  const theme = useThemeContext()
+
+  const bgStyle = {
+    background: theme ? theme.preview : null
+  }
+
+  const fontStyle = {
+    color: theme ? theme.text : null
+  }
 
   const onClickNote = () => {
     handlePreview(note)
@@ -15,14 +26,14 @@ const NoteItem = ({ note, onDelete, handlePreview }) => {
     onDelete(note)
   }
   return (
-    <li className={styles.note_item} onClick={onClickNote}>
-      <div className={styles.title}>
+    <li className={styles.note_item} onClick={onClickNote} style={bgStyle}>
+      <div className={styles.title} style={fontStyle}>
         {title}
       </div>
-      <p className={styles.date}>
+      <p className={styles.date} style={fontStyle}>
         {date}
       </p>
-      <p className={styles.hashtag}>
+      <p className={styles.hashtag} style={fontStyle}>
         {hashtag &&
           hashtag.map(tag => {
             return `#${tag}`
