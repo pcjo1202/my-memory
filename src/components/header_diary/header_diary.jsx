@@ -3,9 +3,13 @@ import { useThemeContext } from '../../contexts/themeContext'
 import styles from './header_diary.module.css'
 
 const HeaderDiary = ({ name }) => {
-  const theme = useThemeContext()
+  const useTheme = useThemeContext()
 
-  const fontStyle = { color: theme ? theme.text : null }
+  const fontStyle = {
+    color: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].text
+      : null
+  }
   return (
     <header className={styles.header}>
       <div className={styles.title}>

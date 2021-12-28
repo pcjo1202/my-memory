@@ -23,6 +23,25 @@
 .top {
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookmark {
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  background: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.bookmark:hover {
+  background-color: rgba(255, 255, 255, 0.39);
 }
 
 .date {
@@ -30,15 +49,16 @@
 }
 
 .exit {
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border: none;
   border-radius: 0.3rem;
   background: none;
   cursor: pointer;
   font-size: 1.5rem;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 .exit:hover {

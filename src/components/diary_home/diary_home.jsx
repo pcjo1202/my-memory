@@ -4,8 +4,11 @@ import styles from './diary_home.module.css'
 import HeaderDiary from '../header_diary/header_diary'
 import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
+import { useNoteStateContext } from '../../contexts/NoteContext'
 
-const DiaryHome = ({ note, onDelete, handlePreview }) => {
+const DiaryHome = ({ handlePreview }) => {
+  const useNoteState = useNoteStateContext()
+  const { note } = useNoteState
   return (
     <main className={styles.home}>
       <HeaderDiary name='나의 기록' />
@@ -16,7 +19,6 @@ const DiaryHome = ({ note, onDelete, handlePreview }) => {
             key={date}
             date={date}
             note={note[date]}
-            onDelete={onDelete}
             handlePreview={handlePreview}
             />
           )}

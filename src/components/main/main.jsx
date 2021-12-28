@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router'
+import React, { useEffect, useRef, useState } from 'react'
+import { NoteProvider } from '../../contexts/NoteContext'
 import { ThemeProvider } from '../../contexts/themeContext'
-import useFirstRender from '../../hook/useFirstRender'
 
 // components
 import BtnBlob from '../btn_blob/btn_blob'
@@ -16,9 +15,7 @@ import styles from './main.module.css'
 const Main = ({ authService, repository, userData }) => {
   const [userId, setUserId] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [theme, setTheme] = useState('Default') // setting page에서 설정하는 theme를 여기에 저장
-  
-  const navigate = useNavigate()
+
   const startRef = useRef()
   const loginRef = useRef()
 
@@ -28,7 +25,6 @@ const Main = ({ authService, repository, userData }) => {
       authService.googleGetAuthState(user => {
         if (user) {
           setUserId(user.uid)
-          // navigate('/')
         } else {
           setLoading(false)
         }
@@ -36,26 +32,7 @@ const Main = ({ authService, repository, userData }) => {
 
       return () => {}
     },
-    [authService, navigate, userId]
-  )
-
-  const saveTheme = useCallback(
-    () => {
-      userData.save(userId, theme)
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [theme]
-  )
-
-  useFirstRender(saveTheme)
-
-useEffect(
-    () => {
-      userData.get(userId, data => {
-        setTheme(data)
-      })
-    },
-    [userData, userId]
+    [authService, userId]
   )
 
   const onClickStart = () => {
@@ -64,24 +41,21 @@ useEffect(
     loginRef.current.classList.add(styles.onDisplay)
   }
 
-  const changeTheme = color => {
-    setTheme(color)
-  }
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider userData={userData} userId={userId}>
       {userId
-        ? <Diary
+        ? <NoteProvider
           authService={authService}
           repository={repository}
           userId={userId}
-          changeTheme={changeTheme}
-          />
+          >
+          <Diary authService={authService} />
+        </NoteProvider>
         : <div className={styles.container}>
           <MainVirtual />
           {loading
               ? <LoadingSpinner />
-              : <>
+              : <div>
                 <Header />
                 <section className={styles.content}>
                   <div ref={startRef} className={styles.start}>
@@ -92,7 +66,7 @@ useEffect(
                     <Login authService={authService} />
                   </div>
                 </section>
-              </>}
+              </div>}
         </div>}
     </ThemeProvider>
   )

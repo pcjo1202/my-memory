@@ -1,8 +1,12 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router'
+import { useNoteStateContext } from '../../contexts/NoteContext'
 import styles from './maker.module.css'
 
-const Maker = ({ onAdd }) => {
+const Maker = () => {
+  const useNoteState = useNoteStateContext()
+  const { onAdd } = useNoteState
+
   const noteRef = useRef()
   const titleRef = useRef()
   const emotionRef = useRef()
@@ -26,7 +30,8 @@ const Maker = ({ onAdd }) => {
       text: noteRef.current.value || '내용없음',
       hashtag: hashtagArr || '',
       emotion: emote[emotionRef.current.value] || '',
-      date: setDate()
+      date: setDate(),
+      bookmark: false
     }
 
     onAdd(note)

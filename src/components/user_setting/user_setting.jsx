@@ -3,18 +3,23 @@ import { useThemeContext } from '../../contexts/themeContext'
 import HeaderDiary from '../header_diary/header_diary'
 import styles from './user_setting.module.css'
 
-const UserSetting = ({ changeTheme }) => {
+const UserSetting = ({}) => {
   const themeRef = useRef()
-  const theme = useThemeContext()
+  const useTheme = useThemeContext()
 
   const handleTheme = event => {
     themeRef.current = event.target.name
-    changeTheme(themeRef.current)
+    useTheme.setTheme(themeRef.current)
+    // changeTheme(themeRef.current)
   }
 
   const fontStyle = {
-    color: theme ? theme.text : null
+    color: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].text
+      : null
   }
+
+  // console.log(useTheme.themeData[useTheme.theme])
 
   return (
     <section className={styles.setting}>

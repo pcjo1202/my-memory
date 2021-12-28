@@ -1,8 +1,36 @@
-import { createContext, useContext } from 'react'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
+import useFirstRender from '../hook/useFirstRender'
 
 export const ThemeContext = createContext()
 
-const ThemeProvider = ({ children, theme }) => {
+const ThemeProvider = ({ children, userData, userId, themes }) => {
+  const [theme, setTheme] = useState('Default') // setting page에서 설정하는 theme를 여기에 저장
+
+  useEffect(
+    () => {
+      userData.get(userId, data => {
+        setTheme(data)
+      })
+    },
+    [userData, userId]
+  )
+
+  const saveTheme = useCallback(
+    () => {
+      userData.save(userId, theme)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme]
+  )
+
+  useFirstRender(saveTheme)
+
   const themeData = {
     Dark: {
       menu: '#373737',
@@ -30,8 +58,14 @@ const ThemeProvider = ({ children, theme }) => {
     }
   }
 
+  const themeContextValue = {
+    themeData,
+    theme,
+    setTheme
+  }
+
   return (
-    <ThemeContext.Provider value={themeData[theme]}>
+    <ThemeContext.Provider value={themeContextValue}>
       {children}
     </ThemeContext.Provider>
   )

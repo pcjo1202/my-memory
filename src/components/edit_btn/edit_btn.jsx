@@ -5,9 +5,11 @@ import { useThemeContext } from '../../contexts/themeContext'
 // import { TiPlus } from 'react-icons/ti'
 import styles from './edit_btn.module.css'
 const EditBtn = () => {
-  const theme = useThemeContext()
+  const useTheme = useThemeContext()
   const bgStyle = {
-    background: theme ? theme.editor : null
+    background: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].editor
+      : null
   }
   return (
     <Link to='/maker'>

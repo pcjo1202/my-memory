@@ -11,7 +11,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
   const bookmarkRef = useRef()
   const calenderRef = useRef()
 
-  const theme = useThemeContext()
+  const useTheme = useThemeContext()
 
   const subIconRef = useCallback(node => {}, [])
 
@@ -25,9 +25,17 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
     contentsIncrease()
   }
 
-  const menuStyle = { background: theme ? theme.menu : null }
+  const menuStyle = {
+    background: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].menu
+      : null
+  }
 
-  const iconStyle = { color: theme ? theme.icon : null }
+  const iconStyle = {
+    color: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].icon
+      : null
+  }
 
   return (
     <nav

@@ -3,18 +3,23 @@ import styles from './note_item.module.css'
 
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { useThemeContext } from '../../contexts/themeContext'
+import { useNoteStateContext } from '../../contexts/NoteContext'
 
-const NoteItem = ({ note, onDelete, handlePreview }) => {
+const NoteItem = ({ note, handlePreview }) => {
   const { hashtag, title, date } = note
-
-  const theme = useThemeContext()
+  const useNoteState = useNoteStateContext()
+  const useTheme = useThemeContext()
 
   const bgStyle = {
-    background: theme ? theme.preview : null
+    background: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].preview
+      : null
   }
 
   const fontStyle = {
-    color: theme ? theme.text : null
+    color: useTheme.themeData[useTheme.theme]
+      ? useTheme.themeData[useTheme.theme].text
+      : null
   }
 
   const onClickNote = () => {
@@ -23,7 +28,7 @@ const NoteItem = ({ note, onDelete, handlePreview }) => {
 
   const handelDelete = event => {
     event.stopPropagation() // 이벤트 캡쳐링을 캡쳐링 막기 (delete 버튼을 누를 때 preview도 같이 나오는거 방지)
-    onDelete(note)
+    useNoteState.onDelete(note)
   }
   return (
     <li className={styles.note_item} onClick={onClickNote} style={bgStyle}>
