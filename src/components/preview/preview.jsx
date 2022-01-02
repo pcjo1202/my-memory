@@ -1,15 +1,47 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useThemeContext } from '../../contexts/themeContext'
 import { FiBookmark } from 'react-icons/fi'
 import { FcBookmark } from 'react-icons/fc'
 import { BiArrowBack } from 'react-icons/bi'
 import styles from './preview.module.css'
+import { useNoteStateContext } from '../../contexts/NoteContext'
 
-const Preview = ({ note, handlePreview, handleBookmark }) => {
-  const previewRef = useRef()
+const Preview = ({ preview, handlePreview }) => {
   const useTheme = useThemeContext()
+  const useNoteState = useNoteStateContext()
+  const { note, setNote, bookmarkId, setBookmarkId } = useNoteState
 
-  const { date, title, emotion, text, bookmark } = note
+  console.log(note[preview.date][preview.id])
+  console.log(bookmarkId)
+
+  const { date, title, emotion, text, bookmark } = note[preview.date][
+    preview.id
+  ]
+
+  const onClickExit = () => {
+    handlePreview(preview)
+  }
+
+  const handleBookmark = (date, id) => {
+    setNote(note => {
+      const update = { ...note }
+      const bookmark = update[date][id].bookmark
+      bookmark === true
+        ? (update[date][id].bookmark = false)
+        : (update[date][id].bookmark = true)
+      return update
+    })
+
+    setBookmarkId(prev => {
+      const update = { ...prev }
+      if (update[id]) {
+        delete update[id]
+      } else {
+        update[id] = preview
+      }
+      return update
+    })
+  }
 
   const bgStyle = {
     background: useTheme.themeData[useTheme.theme]
@@ -23,15 +55,8 @@ const Preview = ({ note, handlePreview, handleBookmark }) => {
       : null
   }
 
-  const onClickExit = () => {
-    handlePreview(note)
-  }
-
-  const onClickBookmark = () => {
-    handleBookmark(note.date, note.id)
-  }
   return (
-    <section ref={previewRef} className={styles.preview} style={bgStyle}>
+    <section className={styles.preview} style={bgStyle}>
       <header className={styles.top}>
         <button className={styles.exit} onClick={onClickExit}>
           <BiArrowBack style={fontStyle} />
@@ -39,7 +64,10 @@ const Preview = ({ note, handlePreview, handleBookmark }) => {
         <p className={styles.date} style={fontStyle}>
           {date}
         </p>
-        <button className={styles.bookmark} onClick={onClickBookmark}>
+        <button
+          className={styles.bookmark}
+          onClick={() => handleBookmark(preview.date, preview.id)}
+        >
           {bookmark ? <FcBookmark /> : <FiBookmark />}
         </button>
       </header>

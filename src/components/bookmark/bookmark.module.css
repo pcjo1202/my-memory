@@ -1,0 +1,7 @@
+.note_list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.7rem;
+  transition: all 0.2s ease-out;
+}

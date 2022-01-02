@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
+// import { useNoteStateContext } from '../../contexts/NoteContext'
 import { useThemeContext } from '../../contexts/themeContext'
 
 import DiaryContainer from '../diary_container/diary_container'
@@ -8,12 +9,12 @@ import Preview from '../preview/preview'
 import styles from './diary.module.css'
 
 const Diary = ({ authService }) => {
-  const [note, setNote] = useState({}) // 작성한 메모 데이터를 저장
-  const [preview, setPreview] = useState(null)
-
+  const [preview, setPreview] = useState(null) // preveiw를 보여줄 note의 date와 id를 저장
   const contentsRef = useRef() // contens 태그에 접근하기 위해
-
   const useTheme = useThemeContext()
+  // const useNoteState = useNoteStateContext()
+
+  // const { setNote } = useNoteState
 
   useEffect(
     () => {
@@ -23,7 +24,13 @@ const Diary = ({ authService }) => {
     },
     [useTheme.theme, useTheme.themeData]
   )
-
+  /* 테마가 바뀔때마다 배경화면의 테마 바꿈 */
+  useEffect(
+    () => {
+      document.body.style.background = useTheme ? useTheme.background : null
+    },
+    [useTheme]
+  )
   const navigate = useNavigate()
 
   const onLogOut = () => {
@@ -38,44 +45,22 @@ const Diary = ({ authService }) => {
   }
 
   const handlePreview = note => {
+    // console.log({ date: note.date, id: note.id })
     if (preview === null) {
       // 활성화 하면서 데이터를 임시로 저장
-      setPreview(note)
+      setPreview({ date: note.date, id: note.id })
     } else {
       // preview를 끌 때 임시데이터를 삭제함
       setPreview(null)
     }
   }
 
-  const handleBookmark = (date, id) => {
-    setNote(note => {
-      const update = { ...note }
-      const bookmark = update[date][id].bookmark
-      !bookmark
-        ? (update[date][id].bookmark = false)
-        : (update[date][id].bookmark = true)
-      return update
-    })
-
-    setPreview(note => {
-      const update = { ...note }
-      const bookmark = update.bookmark
-      !bookmark ? (update.bookmark = true) : (update.bookmark = false)
-      return update
-    })
-  }
-
   return (
     <div className={styles.container}>
       <Menu contentsIncrease={increase} onLogOut={onLogOut} />
       <section ref={contentsRef} className={styles.contents}>
-        <DiaryContainer note={note} handlePreview={handlePreview} />
-        {preview &&
-          <Preview
-            note={preview}
-            handlePreview={handlePreview}
-            handleBookmark={handleBookmark}
-          />}
+        <DiaryContainer handlePreview={handlePreview} />
+        {preview && <Preview preview={preview} handlePreview={handlePreview} />}
       </section>
     </div>
   )

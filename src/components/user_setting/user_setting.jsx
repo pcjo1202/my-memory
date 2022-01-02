@@ -3,14 +3,13 @@ import { useThemeContext } from '../../contexts/themeContext'
 import HeaderDiary from '../header_diary/header_diary'
 import styles from './user_setting.module.css'
 
-const UserSetting = ({}) => {
+const UserSetting = () => {
   const themeRef = useRef()
   const useTheme = useThemeContext()
 
   const handleTheme = event => {
     themeRef.current = event.target.name
     useTheme.setTheme(themeRef.current)
-    // changeTheme(themeRef.current)
   }
 
   const fontStyle = {
@@ -18,8 +17,6 @@ const UserSetting = ({}) => {
       ? useTheme.themeData[useTheme.theme].text
       : null
   }
-
-  // console.log(useTheme.themeData[useTheme.theme])
 
   return (
     <section className={styles.setting}>
