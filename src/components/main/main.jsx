@@ -5,7 +5,6 @@ import { ThemeProvider } from '../../contexts/themeContext'
 // components
 import BtnBlob from '../btn_blob/btn_blob'
 import Diary from '../diary/diary'
-import Header from '../header/header'
 import LoadingSpinner from '../loading_spinner/loading_spinner'
 import Login from '../login/login'
 import MainVirtual from '../main_virtual/main_virtual'
@@ -56,7 +55,6 @@ const Main = ({ authService, repository, userData }) => {
           {loading
               ? <LoadingSpinner />
               : <div>
-                <Header />
                 <section className={styles.content}>
                   <div ref={startRef} className={styles.start}>
                     <TitleText />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 // import { useNoteStateContext } from '../../contexts/NoteContext'
 import { useThemeContext } from '../../contexts/themeContext'
@@ -33,27 +33,36 @@ const Diary = ({ authService }) => {
   )
   const navigate = useNavigate()
 
-  const onLogOut = () => {
-    // 로그아웃
-    authService.googleSignOut()
-    navigate(0)
-  }
+  const onLogOut = useCallback(
+    () => {
+      // 로그아웃
+      authService.googleSignOut()
+      navigate(0)
+    },
+    [authService, navigate]
+  )
 
-  const increase = () => {
-    // 메뉴버튼을 눌렀을때 늘어나게 하는 함수
-    contentsRef.current.classList.toggle(`${styles.increase}`)
-  }
+  const increase = useCallback(
+    () => {
+      // 메뉴버튼을 눌렀을때 늘어나게 하는 함수
+      contentsRef.current.classList.toggle(`${styles.increase}`)
+    },
+    [contentsRef]
+  )
 
-  const handlePreview = note => {
-    // console.log({ date: note.date, id: note.id })
-    if (preview === null) {
-      // 활성화 하면서 데이터를 임시로 저장
-      setPreview({ date: note.date, id: note.id })
-    } else {
-      // preview를 끌 때 임시데이터를 삭제함
-      setPreview(null)
-    }
-  }
+  const handlePreview = useCallback(
+    note => {
+      // console.log({ date: note.date, id: note.id })
+      if (preview === null) {
+        // 활성화 하면서 데이터를 임시로 저장
+        setPreview({ date: note.date, id: note.id })
+      } else {
+        // preview를 끌 때 임시데이터를 삭제함
+        setPreview(null)
+      }
+    },
+    [preview]
+  )
 
   return (
     <div className={styles.container}>

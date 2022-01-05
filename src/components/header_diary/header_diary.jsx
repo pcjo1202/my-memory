@@ -2,7 +2,7 @@ import React from 'react'
 import { useThemeContext } from '../../contexts/themeContext'
 import styles from './header_diary.module.css'
 
-const HeaderDiary = ({ name }) => {
+const HeaderDiary = React.memo(({ name }) => {
   const useTheme = useThemeContext()
 
   const fontStyle = {
@@ -19,6 +19,6 @@ const HeaderDiary = ({ name }) => {
       </div>
     </header>
   )
-}
+})
 
 export default HeaderDiary

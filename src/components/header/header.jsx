@@ -11,11 +11,7 @@ const Header = props => {
             <img src='/image/logo_transparent.png' alt='하루를 기록' />
           </a>
         </h1>
-        <nav className={styles.btn_nav}>
-          <div className={styles.nav}>
-            <div className={styles.hamburger} />
-          </div>
-        </nav>
+        <div className={styles.about}>ABOUT</div>
       </div>
     </header>
   )

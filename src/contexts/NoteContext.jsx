@@ -32,28 +32,28 @@ const NoteProvider = ({ children, repository, userId }) => {
       repository.saveNote(userId, bookmarkId, 'bookmark')
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [note]
+    [note, bookmarkId]
   )
   useFirstRender(saveNote)
 
   /* note State에 저장 */
-  const onAdd = data => {
+  const onAdd = useCallback(data => {
     setNote(notes => {
       const update = { ...notes }
       const innerData = update[data.date]
       update[data.date] = { ...innerData, [data.id]: data }
       return update
     })
-  }
+  }, [])
 
   /* note State에서 해당 데이터 삭제 */
-  const onDelete = data => {
+  const onDelete = useCallback(data => {
     setNote(note => {
       const update = { ...note }
       delete update[data.date][data.id]
       return update
     })
-  }
+  }, [])
 
   const ntoeProviderValue = {
     note,

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useThemeContext } from '../../contexts/themeContext'
 import styles from './menu.module.css'
 
-const Menu = ({ contentsIncrease, onLogOut }) => {
+const Menu = React.memo(({ contentsIncrease, onLogOut }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
   const logoutRef = useRef()
@@ -13,9 +13,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
 
   const useTheme = useThemeContext()
 
-  const subIconRef = useCallback(node => {}, [])
-
-  const increaseMenu = () => {
+  const increaseMenu = useCallback(() => {
     wrapperRef.current.classList.toggle(`${styles.increase}`)
     menuRef.current.classList.toggle(`${styles.active}`)
     homeRef.current.classList.toggle(`${styles.onDisplay}`)
@@ -23,7 +21,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
     calenderRef.current.classList.toggle(`${styles.onDisplay}`)
     logoutRef.current.classList.toggle(`${styles.onDisplay}`)
     contentsIncrease()
-  }
+  }, [])
 
   const menuStyle = {
     background: useTheme.themeData[useTheme.theme]
@@ -49,7 +47,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
         </div>
 
         <ul className={styles.sub_icon_list}>
-          <li ref={subIconRef} className={styles.sub_icon} style={iconStyle}>
+          <li className={styles.sub_icon} style={iconStyle}>
             <Link to='/' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-home`} />
               <span ref={homeRef} className={styles.icon_text}>
@@ -58,7 +56,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
             </Link>
           </li>
 
-          <li ref={subIconRef} className={styles.sub_icon} style={iconStyle}>
+          <li className={styles.sub_icon} style={iconStyle}>
             <Link to='bookmark' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-bookmark`} />
               <span ref={bookmarkRef} className={styles.icon_text}>
@@ -67,7 +65,7 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
             </Link>
           </li>
 
-          <li ref={subIconRef} className={styles.sub_icon} style={iconStyle}>
+          <li className={styles.sub_icon} style={iconStyle}>
             <Link to='calendar' className={styles.sub_icon_box}>
               <i className={`${styles.item_icon} fas fa-calendar-alt`} />
               <span ref={calenderRef} className={styles.icon_text}>
@@ -96,6 +94,6 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
       </div>
     </nav>
   )
-}
+})
 
 export default Menu

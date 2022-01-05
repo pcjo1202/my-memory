@@ -126,5 +126,5 @@
   transition: all 0.2s ease-in;
 }
 /* 45rem */
-@media screen and (max-width: mediaQueryTablet) {
+@media screen and (max-width: mediaQueryMobile) {
 }

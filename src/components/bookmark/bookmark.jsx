@@ -15,6 +15,7 @@ const Bookmark = ({ handlePreview }) => {
   const useNoteState = useNoteStateContext()
   const { note, bookmarkId } = useNoteState
 
+  console.log(bookmarkId)
   return (
     <section className={styles.Bookmark}>
       <HeaderDiary name='기억하고 싶은 추억..' />

@@ -6,7 +6,7 @@ import NoteList from '../note_list/note_list'
 import EditBtn from '../edit_btn/edit_btn'
 import { useNoteStateContext } from '../../contexts/NoteContext'
 
-const DiaryHome = ({ handlePreview }) => {
+const DiaryHome = React.memo(({ handlePreview }) => {
   const useNoteState = useNoteStateContext()
   const { note } = useNoteState
   return (
@@ -22,10 +22,9 @@ const DiaryHome = ({ handlePreview }) => {
             handlePreview={handlePreview}
             />
           )}
-
       <EditBtn />
     </main>
   )
-}
+})
 
 export default DiaryHome

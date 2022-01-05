@@ -4,3 +4,7 @@
   background: none;
   cursor: pointer;
 }
+
+.btn_img {
+  width: 15rem;
+}

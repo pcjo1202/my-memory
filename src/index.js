@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import './index.module.css'
 import App from './app'
 
-import { AuthService } from './service/authService'
-
 import '@fortawesome/fontawesome-free/js/all'
+
+import { AuthService } from './service/authService'
 import NoteRepository from './service/noteRepository'
 import UserData from './service/userData'
 
