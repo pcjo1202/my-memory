@@ -13,15 +13,18 @@ const Menu = ({ contentsIncrease, onLogOut }) => {
 
   const useTheme = useThemeContext()
 
-  const increaseMenu = useCallback(() => {
-    wrapperRef.current.classList.toggle(`${styles.increase}`)
-    menuRef.current.classList.toggle(`${styles.active}`)
-    homeRef.current.classList.toggle(`${styles.onDisplay}`)
-    bookmarkRef.current.classList.toggle(`${styles.onDisplay}`)
-    calenderRef.current.classList.toggle(`${styles.onDisplay}`)
-    logoutRef.current.classList.toggle(`${styles.onDisplay}`)
-    contentsIncrease()
-  }, [])
+  const increaseMenu = useCallback(
+    () => {
+      wrapperRef.current.classList.toggle(`${styles.increase}`)
+      menuRef.current.classList.toggle(`${styles.active}`)
+      homeRef.current.classList.toggle(`${styles.onDisplay}`)
+      bookmarkRef.current.classList.toggle(`${styles.onDisplay}`)
+      calenderRef.current.classList.toggle(`${styles.onDisplay}`)
+      logoutRef.current.classList.toggle(`${styles.onDisplay}`)
+      contentsIncrease()
+    },
+    [contentsIncrease]
+  )
 
   const menuStyle = {
     background: useTheme.themeData[useTheme.theme]
