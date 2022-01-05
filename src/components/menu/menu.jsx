@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useThemeContext } from '../../contexts/themeContext'
 import styles from './menu.module.css'
 
-const Menu = React.memo(({ contentsIncrease, onLogOut }) => {
+const Menu = ({ contentsIncrease, onLogOut }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
   const logoutRef = useRef()
@@ -94,6 +94,6 @@ const Menu = React.memo(({ contentsIncrease, onLogOut }) => {
       </div>
     </nav>
   )
-})
+}
 
 export default Menu
