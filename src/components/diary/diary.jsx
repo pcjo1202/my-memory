@@ -42,13 +42,10 @@ const Diary = ({ authService }) => {
     [authService, navigate]
   )
 
-  const increase = useCallback(
-    () => {
-      // 메뉴버튼을 눌렀을때 늘어나게 하는 함수
-      contentsRef.current.classList.toggle(`${styles.increase}`)
-    },
-    [contentsRef]
-  )
+  const increase = () => {
+    // 메뉴버튼을 눌렀을때 늘어나게 하는 함수
+    contentsRef.current.classList.toggle(`${styles.increase}`)
+  }
 
   const handlePreview = useCallback(
     note => {
